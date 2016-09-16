@@ -1,1 +1,0 @@
-angular.module('app').constant('peoplePage','js/core/people.html')
