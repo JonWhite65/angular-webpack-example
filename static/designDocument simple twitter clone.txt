@@ -1,0 +1,29 @@
+requirements document 
+simple twitter clone
+
+3 concepte
+user tweet-created by user  folling another user
+
+user-can create tweets 
+	-can follow other users
+	
+login page-authentication and encryption of passwords
+			-bcrypt-pure java script
+			-front end encryption
+			-
+home page-all of the users tweets
+			-all of the users followed by the user tweets
+		-private page landing page when loged in 
+user profile-only specific tweets user has sent out
+			-show specific users followers and the users being followed
+			-if a user is logged in allow them to follow or unfollow this profile
+			-cant follow self
+global tweet stream
+
+tweets-timestamps
+		-reverse chronological order
+		-limit tweets to #char
+		
+angular material
+
+routing layout of screens 

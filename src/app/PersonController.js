@@ -1,15 +1,15 @@
-export default ['PersonService', '$stateParams','$location',
+export default
 class PersonController{
 /* @ngInject */
-constructor (personService,stateParams,location ){
+constructor (PersonService,$stateParams,$window ){
 var ctrl = this
-PersonService.getPersonData(stateParams.id).then(function(result){
+PersonService.getPersonData($stateParams.id).then(function(result){
 	ctrl.person = result.data
 })
+
 this.submit= function(){
-	console.dir()
-	PersonService.patchPersonData(this.person).then(function(){location.path('#/peoples')})
+	PersonService.patchPersonData(this.person).then(function(){$window.location.href='#/people'})
 }
 
 
-}}]
+}}

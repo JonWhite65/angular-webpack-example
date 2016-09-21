@@ -1,8 +1,9 @@
-export default ['$http',
+
+export default
 class PeopleService{
 	/* @ngInject */
-	constructor ($https){
-	this.getAllPeople = function() { return $http.get('/people') }
+	constructor ($http){
+	this.getAllPeople = function() { return $http.get('http://localhost:8080/people') }
 
 	}
-}]
+}
