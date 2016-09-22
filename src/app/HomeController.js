@@ -5,7 +5,7 @@ class HomeController{
     var bcrypt = require('bcryptjs')
     this.hash
     $scope.ButtonGuest="Guest"
-    $scope.ButtonLogin="Login/New User"
+    $scope.ButtonLogin="Login / New User"
   $scope.showError=false
   $scope.errorMessage=""
   $scope.GuestHide=true
@@ -24,9 +24,9 @@ class HomeController{
       this.hash = bcrypt.hashSync($scope.user.password,salt );
       HomeService.sendLogin($scope.user.username,this.hash).then((result)=>{
 
-        (result.data.id!==0&&bcrypt.compareSync($scope.user.password, result.data.password))?
+        (result.data.id!==0&&bcrypt.compareSync($scope.user.password, result.data.message))?
         (HomeService.saveId(result.data.id,$scope.user.username),
-        $window.location.href='#/User/'+result.data):
+        $window.location.href='#/User/'+result.data.id):
         this.error("Invalid login")
      })
 
@@ -43,11 +43,15 @@ class HomeController{
       var salt = bcrypt.genSaltSync(10);
       this.hash = bcrypt.hashSync($scope.user.password, salt);
       HomeService.newUser($scope.user.username,this.hash).then((result)=>{
-        (result.data!==0&&bcrypt.compareSync($scope.user.password, result.data.password))?
+        (result.data.id!==0&&bcrypt.compareSync($scope.user.password, result.data.message))?
         (HomeService.saveId(result.data.id,$scope.user.username),
-        $window.location.href='#/User/'+result.data):
+        $window.location.href='#/User/'+result.data.id):
         this.error("Cannot use this Username")
     })
 	}
+  this.reroute=function(location){
+    $window.location.href=location
+  }
+
 }
 }

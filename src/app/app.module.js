@@ -3,13 +3,9 @@ import './home.css'
 import home from './home.html'
 import GlobalController from './GlobalController.js'
 import HomeController from './HomeController.js'
-import PersonController from './PersonController.js'
-import NewPersonController from './NewPersonController.js'
-import PersonService from './PersonService.js'
-import PeopleService from './PeopleService.js'
+import UserController from './UserController.js'
+import ProfileController from './ProfileController.js'
 import HomeService from './HomeService.js'
-import globalTweet from './globalTweet.html'
-import person from './individual.component.html'
 import uirouter from 'angular-ui-router'
 import material from 'angular-material'
 import bcrypt from 'bcryptjs'
@@ -35,19 +31,17 @@ angular.module('App', [uirouter, material])
       })
       .state('Homepage',{
         url:'/User/:id',
-        templateUrl:person,
-        controllerAs:'pC1',
-        controller:PersonController,
+        templateUrl:home,
+        controllerAs:'hC',
+        controller:UserController,
         data:{}
       })
       .state('UserProfile',{
         url:'/UserProfile/:id',
-        templateUrl:person,
-        controller:NewPersonController,
-        controllerAs:'pC1',
+        templateUrl:home,
+        controller:ProfileController,
+        controllerAs:'hC',
         data:{}
       })
   })
-  .service('PersonService', PersonService)
-  .service('PeopleService', PeopleService)
   .service('HomeService', HomeService).name
